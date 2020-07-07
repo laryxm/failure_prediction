@@ -259,3 +259,6 @@ def check_if_normal(df, col, test_type='normal'):
 def prob_thr(y_proba, thr):
     f = lambda x: 0 if x < thr else 1
     return [f(x) for x in y_proba[:,1]]
+
+def get_importances(df, fited_model):
+    return pd.DataFrame({'columns':df.columns,'importance':fited_model.feature_importances_}).sort_values(by ='importance', ascending = False).reset_index(drop = True)
